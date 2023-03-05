@@ -1,0 +1,67 @@
+#problem_link "https://codeforces.com/problemset/problem/1520/A"
+#include<bits/stdc++.h>
+using namespace std;
+#define finish return 0; 
+#define ll long long
+long long solution(long long n,long long k)
+{
+    long long total = 0;
+    long long count = 0;
+    while (total < k)
+    {
+        total += n;
+        n--;
+        count++;
+    }
+    return count;
+}
+ll mod_num(ll x ,ll y , ll n)
+{
+    if(n%x==y)
+    return n;
+    
+    mod_num(x,y,n-1);
+}
+int main()
+{
+
+    string x,x2="";
+    ll t , n ;
+    cin>>t;
+    set<char>m;
+
+    while(t--)
+    {
+        cin>>n;
+        cin>>x;
+        ll c = 0;
+        map<char,ll>m;
+        
+        m[x[0]]++;
+        for(int i=1;i<n;i++)
+        {
+            if(x[i]!=x[i-1])
+            m[x[i]]++;
+        }
+
+        for(char i = 'A';i<='Z';i++)
+        {
+            if(m[i]>1)
+            {
+                c=1;
+                break;
+            }
+        }
+
+        if(c)
+        cout<<"NO\n";
+        else
+        cout<<"YES\n";
+
+
+    }
+
+
+    finish
+
+}
